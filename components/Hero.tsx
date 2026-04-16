@@ -104,9 +104,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="flex items-center justify-center gap-1 min-h-[2.75rem] mb-5"
+          className="flex items-center justify-center gap-1 min-h-[2.75rem] mb-5 overflow-hidden w-full"
         >
-          <span className="text-[clamp(1.1rem,3.5vw,1.75rem)] font-semibold text-slate-300 tracking-tight">
+          <span className="text-[clamp(0.9rem,3.5vw,1.75rem)] font-semibold text-slate-300 tracking-tight">
             {displayText}
           </span>
           <span className="cursor-blink inline-block w-[2px] h-7 sm:h-8 bg-[#A855F7] rounded-full ml-0.5" />

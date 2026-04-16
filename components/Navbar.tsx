@@ -41,7 +41,7 @@ export default function Navbar() {
       initial={{ y: -70, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="fixed top-0 inset-x-0 z-50"
+      className="fixed top-0 inset-x-0 z-50 overflow-hidden"
     >
       {/* Backdrop bar */}
       <div
@@ -56,7 +56,7 @@ export default function Navbar() {
       />
 
       <nav
-        className="relative max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between transition-all duration-300"
+        className="relative max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between transition-all duration-300 w-full"
         style={{ height: scrolled ? '52px' : '64px' }}
       >
 
