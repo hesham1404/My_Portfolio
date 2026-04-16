@@ -164,7 +164,7 @@ export default function Experience() {
             Experience
           </motion.p>
           <motion.h2
-            className="text-4xl sm:text-5xl font-bold text-white mb-14"
+            className="text-[1.75rem] sm:text-4xl md:text-5xl font-bold text-white mb-14"
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}

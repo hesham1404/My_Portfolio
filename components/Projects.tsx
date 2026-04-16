@@ -218,7 +218,7 @@ export default function Projects() {
             Projects
           </motion.p>
           <motion.h2
-            className="mb-3 text-4xl font-bold text-white sm:text-5xl"
+            className="mb-3 text-[1.75rem] font-bold text-white sm:text-4xl md:text-5xl"
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}

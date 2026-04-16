@@ -108,7 +108,7 @@ export default function Contact() {
             Contact
           </motion.p>
           <motion.h2
-            className="mb-3 text-4xl font-bold text-white sm:text-5xl"
+            className="mb-3 text-[1.75rem] font-bold text-white sm:text-4xl md:text-5xl"
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
@@ -220,7 +220,7 @@ export default function Contact() {
           >
             <div className="glass overflow-hidden rounded-2xl">
               <div className="h-[2px] bg-gradient-to-r from-[#A855F7] via-[#C084FC] to-transparent" />
-              <form onSubmit={onSubmit} className="space-y-5 p-6 sm:p-8">
+              <form onSubmit={onSubmit} className="space-y-5 p-4 sm:p-8">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">

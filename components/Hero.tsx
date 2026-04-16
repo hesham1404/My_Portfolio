@@ -88,7 +88,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-[clamp(2.8rem,8vw,5.5rem)] font-extrabold tracking-tight leading-[1.05] text-white mb-4"
+          className="text-[clamp(1.5rem,8vw,5.5rem)] font-extrabold tracking-tight leading-[1.05] text-white mb-4"
         >
           {firstPart}
           <span

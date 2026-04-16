@@ -22,7 +22,7 @@ export default function Education() {
           <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#A855F7]">
             Education
           </p>
-          <h2 className="text-4xl font-bold text-white sm:text-5xl">Academic Background</h2>
+          <h2 className="text-[1.75rem] font-bold text-white sm:text-4xl md:text-5xl">Academic Background</h2>
         </motion.div>
 
         <motion.div
@@ -33,7 +33,7 @@ export default function Education() {
         >
           <div className="h-[2px] bg-gradient-to-r from-[#A855F7] via-[#C084FC] to-transparent" />
 
-          <div className="p-7 sm:p-8">
+          <div className="p-5 sm:p-8">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
               <div className="glass flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl text-[#A855F7]">
                 <GraduationIcon />
