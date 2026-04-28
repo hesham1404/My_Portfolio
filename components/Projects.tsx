@@ -53,6 +53,20 @@ const PROJECTS: Project[] = [
     github: 'https://github.com/amshesham04',
     gradient: 'from-[#7C3AED]/15 via-[#A855F7]/8 to-transparent',
   },
+  {
+    title: 'Office Billing System',
+    description:
+      'Full-stack billing system for managing student project invoices with PDF generation and WhatsApp alerts.',
+    bullets: [
+      'Built a full-stack billing workflow to create, track, and manage student project invoices securely.',
+      'Generated branded PDF invoices with company logo and signature using pdf-lib, and sent automated WhatsApp notifications through the CallMeBot API.',
+      'Implemented REST API routes for billing entry creation, retrieval, PDF export, and secure login and registration.',
+    ],
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'pdf-lib', 'CallMeBot API'],
+    github: 'https://github.com/amshesham04',
+    featured: true,
+    gradient: 'from-[#A855F7]/14 via-[#C084FC]/8 to-transparent',
+  },
 ]
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {

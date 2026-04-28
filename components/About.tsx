@@ -3,19 +3,23 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import type { IconType } from 'react-icons'
+import { FaMicrosoft } from 'react-icons/fa6'
 import {
   SiCss,
   SiGit,
   SiGithub,
   SiHtml5,
   SiJavascript,
+  SiN8N,
   SiNextdotjs,
   SiPostman,
   SiPrisma,
   SiReact,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
 } from 'react-icons/si'
+import { VscVscode } from 'react-icons/vsc'
 
 const SKILLS = [
   { name: 'HTML5', color: '#E34F26', icon: SiHtml5 },
@@ -29,6 +33,11 @@ const SKILLS = [
   { name: 'Prisma ORM', color: '#5A67D8', icon: SiPrisma },
   { name: 'Git', color: '#F05032', icon: SiGit },
   { name: 'GitHub', color: '#ffffff', icon: SiGithub },
+  { name: 'VS Code', color: '#007ACC', icon: VscVscode },
+  { name: 'n8n', color: '#EA4B71', icon: SiN8N },
+  { name: 'Microsoft Office', color: '#D83B01', icon: FaMicrosoft },
+  { name: 'Vercel', color: '#ffffff', icon: SiVercel },
+  { name: 'Postman', color: '#FF6C37', icon: SiPostman },
 ]
 
 const SOFT_SKILLS = [
