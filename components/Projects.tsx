@@ -67,6 +67,32 @@ const PROJECTS: Project[] = [
     featured: true,
     gradient: 'from-[#A855F7]/14 via-[#C084FC]/8 to-transparent',
   },
+  {
+    title: 'AI-Powered Office Management Chatbot',
+    description:
+      'Internal WhatsApp chatbot for answering employee, project, task, and attendance queries using GPT-powered SQL workflows.',
+    bullets: [
+      'Built an internal office WhatsApp chatbot to answer employee, project, task, and attendance questions in plain English.',
+      'Integrated a GPT-based AI agent to convert user prompts into PostgreSQL queries through a two-stage SQL generation and execution pipeline.',
+      'Added loop protection with an IF filter for bot-originated messages and auto-logged all Q&A records to Google Sheets for auditing.',
+    ],
+    stack: ['OpenAI GPT', 'PostgreSQL', 'WhatsApp Cloud API', 'Google Sheets', 'JavaScript'],
+    github: 'https://github.com/amshesham04',
+    gradient: 'from-[#C084FC]/14 via-[#A855F7]/8 to-transparent',
+  },
+  {
+    title: 'Blockchain-Based Decentralized Voting System',
+    description:
+      'Decentralized voting platform built on Ethereum to enable secure, fraud-resistant election management.',
+    bullets: [
+      'Built a decentralized voting platform using Solidity and Ethereum to reduce fraud and improve transparency.',
+      'Implemented role-based access control for voters, observers, and admins, with modules for election creation, candidate registration, and voter management.',
+      'Stored and verified votes on-chain with immutable transaction hashes and integrated MetaMask with an admin dashboard for election operations.',
+    ],
+    stack: ['React.js', 'Next.js', 'TypeScript', 'Solidity', 'Ethereum', 'Ganache', 'Truffle'],
+    github: 'https://github.com/amshesham04',
+    gradient: 'from-[#A855F7]/14 via-[#7C3AED]/8 to-transparent',
+  },
 ]
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
