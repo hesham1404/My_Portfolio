@@ -5,8 +5,9 @@ const requiredEnvVars = [
   'SMTP_PORT',
   'SMTP_USER',
   'SMTP_PASS',
-  'CONTACT_TO_EMAIL',
 ] as const
+
+const DEFAULT_CONTACT_TO_EMAIL = 'salihesham04@gmail.com'
 
 type ContactPayload = {
   name?: string
@@ -73,7 +74,7 @@ export async function POST(request: Request) {
   try {
     await transporter.sendMail({
       from: process.env.CONTACT_FROM_EMAIL || process.env.SMTP_USER,
-      to: process.env.CONTACT_TO_EMAIL,
+      to: process.env.CONTACT_TO_EMAIL || DEFAULT_CONTACT_TO_EMAIL,
       replyTo: email,
       subject: `Portfolio contact from ${name}`,
       text: [

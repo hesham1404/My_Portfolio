@@ -2,7 +2,6 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import MagneticButton from './MagneticButton'
 
 interface Project {
   title: string
@@ -11,8 +10,10 @@ interface Project {
   stack: string[]
   github: string
   live?: string
-  featured?: boolean
   gradient: string
+  featured?: boolean
+  category: string
+  categoryColor: string
 }
 
 const PROJECTS: Project[] = [
@@ -26,8 +27,9 @@ const PROJECTS: Project[] = [
     ],
     stack: ['Python', 'OpenCV', 'MediaPipe', 'Flask', 'PyAutoGUI'],
     github: 'https://github.com/amshesham04',
-    featured: true,
     gradient: 'from-[#A855F7]/15 via-[#7C3AED]/8 to-transparent',
+    category: 'Computer Vision',
+    categoryColor: '#10B981',
   },
   {
     title: 'Blockchain Certificate Verification',
@@ -40,6 +42,8 @@ const PROJECTS: Project[] = [
     stack: ['React.js', 'JavaScript', 'Tailwind CSS', 'Next.js (API)', 'Solidity', 'Ethereum', 'Ganache', 'Truffle'],
     github: 'https://github.com/amshesham04',
     gradient: 'from-[#C084FC]/12 via-[#A855F7]/6 to-transparent',
+    category: 'Blockchain',
+    categoryColor: '#F59E0B',
   },
   {
     title: 'Promark - Blockchain Proximity Marketing',
@@ -52,6 +56,8 @@ const PROJECTS: Project[] = [
     stack: ['React.js', 'JavaScript', 'Tailwind CSS', 'Next.js', 'Solidity', 'Ethereum', 'Ganache', 'Truffle'],
     github: 'https://github.com/amshesham04',
     gradient: 'from-[#7C3AED]/15 via-[#A855F7]/8 to-transparent',
+    category: 'Blockchain',
+    categoryColor: '#F59E0B',
   },
   {
     title: 'Office Billing System',
@@ -64,8 +70,10 @@ const PROJECTS: Project[] = [
     ],
     stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma', 'pdf-lib', 'CallMeBot API'],
     github: 'https://github.com/amshesham04',
-    featured: true,
     gradient: 'from-[#A855F7]/14 via-[#C084FC]/8 to-transparent',
+    featured: true,
+    category: 'Full-Stack',
+    categoryColor: '#6366F1',
   },
   {
     title: 'AI-Powered Office Management Chatbot',
@@ -79,6 +87,8 @@ const PROJECTS: Project[] = [
     stack: ['OpenAI GPT', 'PostgreSQL', 'WhatsApp Cloud API', 'Google Sheets', 'JavaScript'],
     github: 'https://github.com/amshesham04',
     gradient: 'from-[#C084FC]/14 via-[#A855F7]/8 to-transparent',
+    category: 'AI / Automation',
+    categoryColor: '#EC4899',
   },
   {
     title: 'Blockchain-Based Decentralized Voting System',
@@ -92,10 +102,38 @@ const PROJECTS: Project[] = [
     stack: ['React.js', 'Next.js', 'TypeScript', 'Solidity', 'Ethereum', 'Ganache', 'Truffle'],
     github: 'https://github.com/amshesham04',
     gradient: 'from-[#A855F7]/14 via-[#7C3AED]/8 to-transparent',
+    category: 'Blockchain',
+    categoryColor: '#F59E0B',
   },
 ]
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function StarIcon() {
+  return (
+    <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  )
+}
+
+function GithubSmallIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+  )
+}
+
+function ExternalIcon() {
+  return (
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  )
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number; }) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-50px' })
 
@@ -138,7 +176,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     >
       <div ref={innerRef} className="animated-border-inner tilt-card group">
         <div
-          className="glass relative flex h-full min-h-[480px] flex-col overflow-hidden rounded-[17px]"
+          className="glass relative flex h-full min-h-[440px] flex-col overflow-hidden rounded-[17px]"
           style={{ border: 'none' }}
         >
           <div
@@ -147,29 +185,50 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             style={{ opacity: 0 }}
           />
 
-          <div className={`pointer-events-none absolute top-0 inset-x-0 h-40 bg-gradient-to-b ${project.gradient}`} />
-
-          {project.featured && (
-            <div className="absolute top-4 right-4 z-10">
-              <span
-                className="rounded-full border border-[#A855F7]/50 bg-[#A855F7]/80 px-2 py-0.5 text-[10px]
-                           font-bold uppercase tracking-wider text-white"
-              >
-                Featured
-              </span>
+          {/* Card header panel */}
+          <div className={`relative h-[72px] flex-shrink-0 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
+            <div className="card-header-grid absolute inset-0" />
+            <div className="absolute inset-0 flex items-center justify-between px-5">
+              <div className="flex items-center gap-2">
+                <div
+                  className="flex h-9 w-9 items-center justify-center rounded-lg
+                             bg-black/30 border border-white/[0.08] text-slate-400
+                             group-hover:border-[#A855F7]/30 group-hover:text-[#A855F7]
+                             backdrop-blur-sm transition-all duration-300"
+                >
+                  <CodeIcon />
+                </div>
+                {/* Category chip */}
+                <span
+                  className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-sm"
+                  style={{
+                    color: project.categoryColor,
+                    borderColor: `${project.categoryColor}35`,
+                    background: `${project.categoryColor}12`,
+                  }}
+                >
+                  {project.category}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                {project.featured && (
+                  <span className="featured-badge">
+                    <StarIcon />
+                    Featured
+                  </span>
+                )}
+                <span className="font-mono text-[10px] font-bold text-white/20">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
             </div>
-          )}
+          </div>
 
           <div className="relative flex flex-1 flex-col p-6">
-            <div
-              className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl glass text-slate-500
-                         transition-all duration-300 group-hover:border-[#A855F7]/20 group-hover:text-[#A855F7]"
-            >
-              <CodeIcon />
-            </div>
+
 
             <h3
-              className="mb-3 pr-14 text-[17px] font-bold leading-snug text-white
+              className="mb-3 text-[17px] font-bold leading-snug text-white
                          transition-colors duration-200 group-hover:text-[#C084FC]"
             >
               {project.title}
@@ -199,39 +258,32 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               ))}
             </div>
 
-            <div className="mb-2 h-5 overflow-hidden">
-              <div
-                className="flex items-center gap-1 text-[12px] font-semibold text-[#A855F7]
-                           translate-y-3 opacity-0 transition-all duration-300
-                           group-hover:translate-y-0 group-hover:opacity-100"
+            {/* Card footer — links */}
+            <div className="flex items-center gap-2 pt-4 border-t border-white/[0.05] mt-auto">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-link-btn"
+                onClick={e => e.stopPropagation()}
               >
-                View Project -&gt;
-              </div>
-            </div>
-
-            <div className="mt-auto flex items-center gap-4 border-t border-white/[0.05] pt-4">
-              <MagneticButton
-                onClick={() => window.open(project.github, '_blank')}
-                className="flex cursor-pointer items-center gap-1.5 border-0 bg-transparent p-0 text-[13px]
-                           text-slate-500 transition-colors duration-200 hover:text-[#A855F7]"
-              >
-                <GithubIcon />
-                <span>Source</span>
-              </MagneticButton>
-
+                <GithubSmallIcon />
+                View Code
+              </a>
               {project.live && (
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-[13px] text-slate-500
-                             transition-colors duration-200 hover:text-[#A855F7]"
+                  className="card-link-btn"
+                  onClick={e => e.stopPropagation()}
                 >
                   <ExternalIcon />
-                  <span>Live</span>
+                  Live Demo
                 </a>
               )}
             </div>
+
           </div>
         </div>
       </div>
@@ -250,11 +302,12 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div ref={ref}>
           <motion.p
-            className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#A855F7]"
+            className="section-eyebrow"
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
           >
+            <span className="eyebrow-num">03</span>
             Projects
           </motion.p>
           <motion.h2
@@ -316,16 +369,6 @@ function GithubIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-    </svg>
-  )
-}
-
-function ExternalIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-      <polyline points="15 3 21 3 21 9" />
-      <line x1="10" y1="14" x2="21" y2="3" />
     </svg>
   )
 }

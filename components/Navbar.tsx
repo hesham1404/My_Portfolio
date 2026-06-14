@@ -103,7 +103,17 @@ export default function Navbar() {
         </ul>
 
         {/* ── Right controls ── */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          {/* Hire Me button — desktop */}
+          <a
+            href="#contact"
+            onClick={e => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }) }}
+            className="hire-btn hidden md:inline-flex"
+          >
+            <span className="sparkle text-[9px]">✦</span>
+            Hire Me
+          </a>
+
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(o => !o)}

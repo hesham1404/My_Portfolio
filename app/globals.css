@@ -350,3 +350,293 @@ body {
   transform-style: preserve-3d;
   will-change: transform;
 }
+
+/* ─── Hero spotlight ─────────────────────────────────────── */
+.hero-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 800px;
+  height: 560px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(168,85,247,0.11) 0%, rgba(124,58,237,0.05) 40%, transparent 70%);
+  pointer-events: none;
+  filter: blur(8px);
+}
+
+/* ─── Stat number / label ────────────────────────────────── */
+.stat-value {
+  display: block;
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #ffffff 0%, #C084FC 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+.stat-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #475569;
+  margin-top: 4px;
+}
+.stat-divider {
+  width: 1px;
+  height: 28px;
+  background: linear-gradient(to bottom, transparent, rgba(168,85,247,0.25), transparent);
+}
+
+/* About stats panel */
+
+/* ─── Project card link button ───────────────────────────── */
+.card-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.025);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.card-link-btn:hover {
+  color: #A855F7;
+  border-color: rgba(168,85,247,0.3);
+  background: rgba(168,85,247,0.07);
+  transform: translateY(-1px);
+}
+
+/* ─── Featured project badge ──────────────────────────────── */
+.featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A855F7;
+  border: 1px solid rgba(168,85,247,0.25);
+  background: rgba(168,85,247,0.08);
+}
+
+/* ─── Enhanced glass (stronger depth) ───────────────────── */
+.glass-strong {
+  background: rgba(8, 3, 16, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+}
+
+/* ─── Section glow separator ─────────────────────────────── */
+.section-sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.18) 40%, rgba(192,132,252,0.18) 60%, transparent 100%);
+}
+
+/* ─── Gradient text (enhanced) ───────────────────────────── */
+.gradient-text-bright {
+  background: linear-gradient(135deg, #e9d5ff 0%, #A855F7 50%, #7C3AED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Marquee ticker ─────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Section eyebrow number ─────────────────────────────── */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #A855F7;
+  margin-bottom: 12px;
+}
+.section-eyebrow .eyebrow-num {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #A855F7;
+  opacity: 0.5;
+  font-variant-numeric: tabular-nums;
+}
+.section-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: #A855F7;
+  opacity: 0.4;
+}
+
+/* ─── Project card header gradient ──────────────────────── */
+.card-header-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(168,85,247,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,247,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+}
+
+/* ─── Hire me button glow ────────────────────────────────── */
+.hire-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #A855F7, #7C3AED);
+  box-shadow: 0 0 18px rgba(168,85,247,0.4), 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.hire-btn:hover {
+  box-shadow: 0 0 28px rgba(168,85,247,0.6), 0 4px 12px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+.hire-btn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, rgba(192,132,252,0.5), rgba(124,58,237,0.3));
+  z-index: -1;
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.hire-btn:hover::before { opacity: 1; }
+
+/* ─── Sparkle pulse ──────────────────────────────────────── */
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  25% { opacity: 0.6; transform: scale(0.85) rotate(45deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(90deg); }
+  75% { opacity: 0.7; transform: scale(0.9) rotate(135deg); }
+}
+.sparkle {
+  display: inline-block;
+  animation: sparkle 3s ease-in-out infinite;
+  color: #C084FC;
+}
+
+/* ─── Animated flowing gradient (hero name) ──────────────── */
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+.gradient-text-animated {
+  background: linear-gradient(135deg, #A855F7 0%, #E879F9 25%, #C084FC 50%, #7C3AED 75%, #A855F7 100%);
+  background-size: 300% 300%;
+  animation: gradient-flow 5s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Profile card (hero side panel) ────────────────────── */
+.profile-card {
+  background: rgba(8, 3, 18, 0.80);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(168,85,247,0.08),
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 40px rgba(168,85,247,0.06);
+}
+
+/* ─── Company avatar badge ───────────────────────────────── */
+.company-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Category chip (project cards) ─────────────────────── */
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* ─── Ping dot (online indicator) ───────────────────────── */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.9; }
+  70% { transform: scale(2); opacity: 0; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.ping-slow {
+  animation: ping-slow 1.8s cubic-bezier(0,0,0.2,1) infinite;
+}
+
+/* ─── Section glow border (top separator) ───────────────── */
+.section-top-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.25) 40%, rgba(192,132,252,0.25) 60%, transparent 100%);
+}
+
+/* ─── Experience card company panel ─────────────────────── */
+.exp-company-panel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: rgba(168,85,247,0.03);
+}

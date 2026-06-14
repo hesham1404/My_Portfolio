@@ -20,6 +20,34 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Contact Form Email Setup
+
+The contact form already posts to `app/api/contact/route.ts` and sends emails with `nodemailer`.
+
+To receive messages at `salihesham04@gmail.com`:
+
+1. Create a `.env.local` file in the project root.
+2. Copy the values from `.env.example`.
+3. Use your Gmail address for `SMTP_USER`.
+4. Use a Gmail App Password for `SMTP_PASS`.
+
+Example:
+
+```env
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=salihesham04@gmail.com
+SMTP_PASS=your-gmail-app-password
+CONTACT_TO_EMAIL=salihesham04@gmail.com
+CONTACT_FROM_EMAIL=salihesham04@gmail.com
+```
+
+Notes:
+
+- Do not use your normal Gmail password. Use an App Password from your Google account.
+- You need 2-Step Verification enabled on the Gmail account before Google lets you create an App Password.
+- After adding `.env.local`, restart the dev server.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

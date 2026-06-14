@@ -94,17 +94,19 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-24 sm:py-32 overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#A855F7]/[0.04] blur-[100px]" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A855F7]/20 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-[400px] w-[700px] -translate-x-1/2 rounded-full opacity-[0.05] blur-[80px]"
+           style={{ background: 'radial-gradient(circle, #A855F7, transparent 70%)' }} />
 
       <div className="relative mx-auto max-w-5xl px-5 sm:px-8">
         <motion.div ref={ref} className="mb-14">
           <motion.p
-            className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#A855F7]"
+            className="section-eyebrow"
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
           >
+            <span className="eyebrow-num">05</span>
             Contact
           </motion.p>
           <motion.h2
@@ -113,7 +115,9 @@ export default function Contact() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            Let&apos;s Work Together
+            Let&apos;s Build Something
+            <br />
+            <span className="gradient-text">Great Together.</span>
           </motion.h2>
           <motion.p
             className="max-w-sm text-[15px] text-slate-500"

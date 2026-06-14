@@ -6,9 +6,11 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 interface Exp {
   role: string
   company: string
+  initials: string
   period: string
   type: string
   color: string
+  current?: boolean
   bullets: string[]
 }
 
@@ -16,9 +18,11 @@ const EXPERIENCES: Exp[] = [
   {
     role: 'Web Developer',
     company: 'MATT Engineering Solution',
+    initials: 'ME',
     period: 'June 2025 – Present',
     type: 'Full-time',
     color: '#A855F7',
+    current: true,
     bullets: [
       'Learning to build websites using React and Next.js with clean and responsive designs.',
       'Learning how to integrate APIs, manage data, and improve the performance of web applications.',
@@ -28,6 +32,7 @@ const EXPERIENCES: Exp[] = [
   {
     role: 'Software Tester',
     company: 'Wenoxo Technologies',
+    initials: 'WT',
     period: 'Feb 2025 – March 2025',
     type: 'Internship',
     color: '#C084FC',
@@ -78,24 +83,47 @@ function ExpCard({ exp, index }: { exp: Exp; index: number }) {
         />
 
         <div className="p-6">
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
-            <div>
-              <h3 className="text-[17px] font-bold text-white mb-1">{exp.role}</h3>
-              <p className="text-sm font-semibold" style={{ color: exp.color }}>{exp.company}</p>
+          {/* Company header row */}
+          <div className="flex items-start justify-between gap-3 mb-5">
+            <div className="flex items-center gap-3.5">
+              {/* Company avatar */}
+              <div
+                className="relative flex-shrink-0 h-11 w-11 rounded-xl flex items-center justify-center font-extrabold text-[13px] text-white tracking-tight border border-white/[0.08] shadow-lg"
+                style={{ background: `linear-gradient(135deg, ${exp.color}40, ${exp.color}18)` }}
+              >
+                {exp.initials}
+                {exp.current && (
+                  <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-emerald-400 border-2 border-[#080312]" />
+                )}
+              </div>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="text-[17px] font-bold text-white leading-tight">{exp.role}</h3>
+                  {exp.current && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/25 text-emerald-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 inline-block" />
+                      Current
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm font-semibold mt-0.5" style={{ color: exp.color }}>{exp.company}</p>
+              </div>
             </div>
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div className="flex flex-col items-end gap-1.5 shrink-0">
               <span
-                className="px-2.5 py-0.5 rounded-full text-[11px] font-bold border uppercase tracking-wider"
+                className="px-2.5 py-0.5 rounded-full text-[10px] font-bold border uppercase tracking-wider"
                 style={{ color: exp.color, borderColor: `${exp.color}30`, background: `${exp.color}0f` }}
               >
                 {exp.type}
               </span>
-              <span className="flex items-center gap-1 text-xs text-slate-500">
+              <span className="flex items-center gap-1 text-[11px] text-slate-500">
                 <CalendarIcon />
                 {exp.period}
               </span>
             </div>
           </div>
+
+          <div className="h-px bg-white/[0.04] mb-4" />
 
           <ul className="space-y-2.5">
             {exp.bullets.map((b, i) => (
@@ -156,21 +184,30 @@ export default function Experience() {
         {/* Header */}
         <div ref={ref}>
           <motion.p
-            className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#A855F7] mb-3"
+            className="section-eyebrow"
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
           >
+            <span className="eyebrow-num">02</span>
             Experience
           </motion.p>
           <motion.h2
-            className="text-[1.75rem] sm:text-4xl md:text-5xl font-bold text-white mb-14"
+            className="text-[1.75rem] sm:text-4xl md:text-5xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
             Where I&apos;ve Worked
           </motion.h2>
+          <motion.p
+            className="mb-14 max-w-sm text-[15px] text-slate-500"
+            initial={{ opacity: 0, y: 8 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Roles where I&apos;ve shipped real products and grown as a developer.
+          </motion.p>
         </div>
 
         <div className="relative">

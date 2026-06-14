@@ -19,7 +19,8 @@ export default function Education() {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#A855F7]">
+          <p className="section-eyebrow">
+            <span className="eyebrow-num">04</span>
             Education
           </p>
           <h2 className="text-[1.75rem] font-bold text-white sm:text-4xl md:text-5xl">Academic Background</h2>

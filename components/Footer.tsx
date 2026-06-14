@@ -4,31 +4,36 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-white/[0.05] py-10 overflow-hidden">
-      {/* Subtle top line glow */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A855F7]/20 to-transparent" />
+    <footer className="relative border-t border-white/[0.04] pt-14 pb-10 overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#A855F7]/25 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
 
-          {/* Logo */}
+        {/* Top row — logo + nav */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10 pb-8 border-b border-white/[0.04]">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group cursor-pointer"
+            className="group cursor-pointer flex items-center gap-1"
           >
-            <span className="font-bold text-sm text-white group-hover:text-[#A855F7] transition-colors duration-200">
+            <span className="font-extrabold text-base text-white group-hover:text-[#A855F7] transition-colors duration-200 tracking-tight">
               Hesham
             </span>
-            <span className="text-[#A855F7] font-bold text-sm">.</span>
+            <span className="text-[#A855F7] font-extrabold text-base">.</span>
           </button>
 
-          {/* Copyright */}
-          <p className="text-xs text-slate-600 order-last sm:order-none">
-            © {year} Mohamed Sali Hesham A. All rights reserved.
-          </p>
+          <nav className="flex items-center gap-6">
+            {['About', 'Experience', 'Projects', 'Contact'].map(item => (
+              <button
+                key={item}
+                onClick={() => document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-[12px] font-medium text-slate-600 hover:text-slate-300 transition-colors duration-200 cursor-pointer uppercase tracking-wider"
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
 
-          {/* Social links */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {[
               { label: 'LinkedIn', href: 'https://linkedin.com/in/amshesham04/', icon: <LinkedInIcon /> },
               { label: 'GitHub',   href: 'https://github.com/amshesham04',       icon: <GitHubIcon   /> },
@@ -41,14 +46,26 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label={label}
                 className="w-8 h-8 flex items-center justify-center rounded-lg
-                           text-slate-600 hover:text-[#A855F7] hover:bg-[#A855F7]/[0.08]
-                           border border-transparent hover:border-[#A855F7]/20
+                           text-slate-700 hover:text-[#A855F7] hover:bg-[#A855F7]/[0.08]
+                           border border-white/[0.04] hover:border-[#A855F7]/20
                            transition-all duration-200"
               >
                 {icon}
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Bottom row */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-[11px] text-slate-700">
+            © {year} Mohamed Sali Hesham A. All rights reserved.
+          </p>
+          <p className="text-[11px] text-slate-700 flex items-center gap-1.5">
+            Built with
+            <span className="text-[#A855F7]/60 text-[9px]">✦</span>
+            Next.js · TypeScript · Tailwind CSS
+          </p>
         </div>
       </div>
     </footer>

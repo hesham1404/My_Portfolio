@@ -63,27 +63,64 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#000000]">
 
       {/* Dot-grid */}
-      <div className="dot-grid absolute inset-0 opacity-40" />
+      <div className="dot-grid absolute inset-0 opacity-30" />
+
+      {/* Hero spotlight — radial glow behind the headline */}
+      <div className="hero-spotlight" />
+
+      {/* Ambient orbs (accent color variety) */}
+      <div
+        className="pointer-events-none absolute rounded-full opacity-[0.18]"
+        style={{
+          width: 520, height: 520,
+          top: '-8%', left: '-6%',
+          background: 'radial-gradient(circle, #7C3AED 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          animation: 'float-slow 11s ease-in-out infinite',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute rounded-full opacity-[0.13]"
+        style={{
+          width: 420, height: 420,
+          bottom: '5%', right: '-4%',
+          background: 'radial-gradient(circle, #A855F7 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          animation: 'float-med 13s ease-in-out infinite',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute rounded-full opacity-[0.08]"
+        style={{
+          width: 300, height: 300,
+          top: '55%', left: '60%',
+          background: 'radial-gradient(circle, #C084FC 0%, transparent 70%)',
+          filter: 'blur(50px)',
+          animation: 'float-slow 9s ease-in-out infinite reverse',
+        }}
+      />
 
       {/* Bottom vignette */}
-      <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-black to-transparent pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center">
+      <div className="relative z-10 max-w-3xl mx-auto px-5 pt-20 sm:px-8 sm:pt-24 text-center">
 
-        {/* Badge with pulse dot */}
+        {/* Badge with sparkle */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8
-                     bg-[#A855F7]/[0.08] border border-[#A855F7]/25 text-[#A855F7] text-xs font-semibold tracking-wide uppercase"
+          className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full mb-8
+                     bg-[#A855F7]/[0.07] border border-[#A855F7]/25 text-[#C084FC] text-[11px] font-bold tracking-[0.14em] uppercase
+                     shadow-[0_0_24px_rgba(168,85,247,0.15),inset_0_1px_0_rgba(255,255,255,0.06)]"
         >
+          <span className="sparkle text-[10px]">✦</span>
+          Available for Work
           <span className="pulse-dot w-1.5 h-1.5 rounded-full bg-[#A855F7]" />
-          Open to opportunities
         </motion.div>
 
-        {/* Name with scramble + glitch */}
+        {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,7 +129,7 @@ export default function Hero() {
         >
           {firstPart}
           <span
-            className={`glitch-text gradient-text${glitching ? ' glitching' : ''}`}
+            className={`glitch-text gradient-text-animated${glitching ? ' glitching' : ''}`}
             data-text={lastWord}
           >
             {lastWord}
@@ -117,9 +154,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-base sm:text-lg text-slate-500 max-w-lg mx-auto leading-relaxed mb-10"
+          className="text-base sm:text-lg text-slate-400 max-w-lg mx-auto leading-relaxed mb-10"
         >
-          I build clean, fast, and responsive web experiences that leave a lasting impression.
+          I craft clean, performant web experiences — from pixel-perfect UIs to solid backend logic.
         </motion.p>
 
         {/* CTA buttons */}
@@ -131,10 +168,11 @@ export default function Hero() {
         >
           <MagneticButton
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-shine group relative px-7 py-3 rounded-xl font-semibold text-sm tracking-wide cursor-pointer
-                       bg-gradient-to-r from-[#A855F7] to-[#9333EA] text-white
+            className="btn-shine group relative px-8 py-3.5 rounded-xl font-semibold text-sm tracking-wide cursor-pointer
+                       bg-gradient-to-r from-[#A855F7] to-[#7C3AED] text-white
                        hover:from-[#B76FF9] hover:to-[#A855F7]
-                       shadow-[0_0_24px_rgba(168,85,247,0.4)] hover:shadow-[0_0_36px_rgba(168,85,247,0.55)]
+                       shadow-[0_0_28px_rgba(168,85,247,0.45),0_4px_16px_rgba(124,58,237,0.3)]
+                       hover:shadow-[0_0_40px_rgba(168,85,247,0.6),0_4px_20px_rgba(124,58,237,0.4)]
                        transition-all duration-200"
           >
             View My Work
@@ -144,9 +182,9 @@ export default function Hero() {
           <a
             href="/resume.pdf"
             download
-            className="group flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm tracking-wide
-                       border border-[#A855F7]/25 text-slate-300
-                       hover:border-[#A855F7]/50 hover:text-[#C084FC] hover:bg-[#A855F7]/[0.06]
+            className="group flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-sm tracking-wide
+                       border border-white/[0.1] text-slate-300
+                       hover:border-[#A855F7]/45 hover:text-[#C084FC] hover:bg-[#A855F7]/[0.07]
                        transition-all duration-200"
           >
             <DownloadIcon />
@@ -159,7 +197,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="flex items-center justify-center gap-4 mt-10"
+          className="flex items-center justify-center gap-3 mt-10"
         >
           {[
             { label: 'GitHub',   href: 'https://github.com/hesham1404',       icon: <GithubIcon /> },
@@ -172,32 +210,34 @@ export default function Hero() {
               target={label !== 'Email' ? '_blank' : undefined}
               rel="noopener noreferrer"
               aria-label={label}
-              className="w-9 h-9 flex items-center justify-center rounded-lg
-                         text-slate-500 hover:text-[#A855F7] hover:bg-[#A855F7]/[0.08]
-                         border border-transparent hover:border-[#A855F7]/25
-                         transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-xl
+                         text-slate-500 hover:text-[#A855F7] hover:bg-[#A855F7]/[0.09]
+                         border border-white/[0.06] hover:border-[#A855F7]/30
+                         transition-all duration-200 hover:scale-110 hover:shadow-[0_0_14px_rgba(168,85,247,0.25)]"
             >
               {icon}
             </a>
           ))}
         </motion.div>
-      </div>
 
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-      >
+        {/* Scroll cue */}
         <motion.div
-          animate={{ y: [0, 7, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-5 h-8 rounded-full border border-white/10 flex items-start justify-center pt-1.5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1 }}
+          className="flex flex-col items-center gap-2 mt-12 pb-4"
         >
-          <div className="w-1 h-2 rounded-full bg-[#A855F7]/60" />
+          <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-700">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 7, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-5 h-8 rounded-full border border-white/[0.08] flex items-start justify-center pt-1.5"
+          >
+            <div className="w-1 h-2 rounded-full bg-[#A855F7]/60" />
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+      </div>
     </section>
   )
 }
